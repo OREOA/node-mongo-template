@@ -7,7 +7,7 @@ const dotenv = require('dotenv')
 
 if (process.env.NODE_ENV !== 'production') {
     dotenv.config()
-    app.use(morgan(':method :url :data :status :res[content-length] - :response-time ms'))
+    app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 }
 
 const connection = require('./connection')
@@ -18,7 +18,7 @@ const example = require('./routes/example')
 app.use(cors())
 app.use(bodyParser.json())
 
-app.use('/api/example', example)
+app.use('/example', example)
 
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
